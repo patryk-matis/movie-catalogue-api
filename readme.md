@@ -1,4 +1,4 @@
-# livechat
+# Movie Catalogue API
 Simple movie catalogue API for The Software House
 
 # Install
