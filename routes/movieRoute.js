@@ -45,7 +45,7 @@ router.post('/get', async (req,res) => {
         res.status(200).json(filteredMovies);
     }
     catch(e){
-        res.status(500).json({error: e.message});
+        res.status(400).json({error: e.message});
     }
 })
 
@@ -64,17 +64,17 @@ router.post('/add', async (req, res) => {
                 }
             });
             if (notSupported){
-                return res.status(500).json("Error: One of the specified genres are not supported.");
+                return res.status(400).json("Error: One of the specified genres are not supported.");
             }
         }
         else {
-            return res.status(500).json("Error: You have to specify genres.");
+            return res.status(400).json("Error: You have to specify genres.");
         }
 
         //Title validation
         if (title){
             if (title.length > 255){
-                return res.status(500).json("Error: Specified title is too long (>255)");
+                return res.status(400).json("Error: Specified title is too long (>255)");
             }
             else {
                 moviefile.movies.map(movie => {
@@ -83,53 +83,53 @@ router.post('/add', async (req, res) => {
                     }
                 });
                 if (notSupported) {
-                    return res.status(500).json("Error: This move is already in the catalogue.");
+                    return res.status(400).json("Error: This move is already in the catalogue.");
                 }
             }
         }
         else {
-            return res.status(500).json("Error: You have to specify a title.")
+            return res.status(400).json("Error: You have to specify a title.")
         }
 
         //Year validation
         if (year){
             if (isNaN(year)){
-                return res.status(500).json("Error: Year must be a number.");
+                return res.status(400).json("Error: Year must be a number.");
             }
         }
         else{
-            return res.status(500).json("Error: You have to specify a year.");
+            return res.status(400).json("Error: You have to specify a year.");
         }
 
         //Runtime validation
         if(runtime){
             if (isNaN(runtime)){
-                return res.status(500).json("Error: Runtime must be a number (in minutes).");
+                return res.status(400).json("Error: Runtime must be a number (in minutes).");
             }
         }
         else{
-            return res.status(500).json("Error: You have to specify a runtime.");
+            return res.status(400).json("Error: You have to specify a runtime.");
         }
 
         //Director validation
         if (director){
             if (director.length > 255){
-                return res.status(500).json("Error: Specified director name is too long (>255)");
+                return res.status(400).json("Error: Specified director name is too long (>255)");
             }
         }
         else {
-            return res.status(500).json("Error: You have to specify a director.");
+            return res.status(400).json("Error: You have to specify a director.");
         }
 
         //Optional validation
         if (actors && actors.length < 3){
-            return res.status(500).json("Error: Actors field should contain at least 3 characters (if specified).");
+            return res.status(400).json("Error: Actors field should contain at least 3 characters (if specified).");
         }
         if (plot && plot.length < 3){
-            return res.status(500).json("Error: Plot field should contain at least 3 characters (if specified).");
+            return res.status(400).json("Error: Plot field should contain at least 3 characters (if specified).");
         }
         if (posterUrl && !isUrl(posterUrl)){
-            return res.status(500).json("Error: PlotUrl does not contain a valid URL.");
+            return res.status(400).json("Error: PlotUrl does not contain a valid URL.");
         }
 
         moviefile.movies.push(
@@ -158,7 +158,7 @@ router.post('/add', async (req, res) => {
 
     }
     catch(e){
-        res.status(500).json({error: e.message});
+        res.status(400).json({error: e.message});
     }
 
 });
