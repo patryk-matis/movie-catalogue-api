@@ -1,0 +1,23 @@
+{
+  "name": "movie-catalogue",
+  "version": "1.0.0",
+  "description": "Simple movie catalogue API for The Software House",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krulaks/movie-catalogue-api.git"
+  },
+  "author": "Patryk Matis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Krulaks/movie-catalogue-api/issues"
+  },
+  "homepage": "https://github.com/Krulaks/movie-catalogue-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
