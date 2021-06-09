@@ -4,7 +4,7 @@
   "description": "Simple movie catalogue API for The Software House",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js --ignore ./data/"
   },
   "repository": {
     "type": "git",
